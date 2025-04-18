@@ -1,0 +1,619 @@
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&family=Orbitron:wght@400..900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'MedievalSharp', cursive;
+    
+    
+}
+
+body {
+    padding: 20%;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-items: center;
+    background: radial-gradient(circle,
+                              rgba(31, 29, 29, 0.8) 0%,
+                              rgb(19, 19, 19) 50%,
+                              rgba(0, 0, 0, 1) 80%,
+                              rgba(0, 0, 0, 1) 100%);
+    perspective: 800px;                     
+}
+
+.book {
+    top: 0%;
+    aspect-ratio: 7/10;
+    width: clamp(100px, 300px, 100%);
+    position: relative;
+    transform: rotateY(-10deg) rotateX(55deg) rotateZ(10deg);
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+    
+    
+}
+
+
+/*Book Animations */
+
+.bookAnimation1{
+    transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg);
+}
+
+.bookAnimation2{
+    transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) translate(55%);
+    
+}
+
+
+
+.cover-container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform-origin: left;
+    will-change: transform;
+    transition: transform 1s ease-in-out;
+    z-index: 12;
+    backface-visibility: hidden;
+
+
+}
+
+
+/* Cover Flip Animation */
+
+.coverFlip {
+    transform: rotateY(-180.5deg);
+}
+
+
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+  
+
+
+
+
+.cover-background{
+    position: absolute;
+    border-bottom-right-radius: 20px ;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 100%;
+    height: 100%; 
+    background: 
+    radial-gradient(ellipse, #6c4830, #482d15 60%, #4f2d12 100%),
+    linear-gradient(to right, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.2) 100%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.15) 0,
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    background-blend-mode: multiply, screen, multiply;
+    background-size: cover, cover, 6px 6px;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.6),    
+        inset 0 2px 10px rgba(0, 0, 0, 0.7); 
+    transform-style: preserve-3d;
+
+}
+
+.book-binder{
+    position: absolute;
+    width: 6%;
+    height: 100%;
+    left: -5%;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background: 
+    radial-gradient(ellipse, #6c4830, #482d15 60%, #4f2d12 100%),
+    linear-gradient(to right, rgba(233, 229, 229, 0.2) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.2) 100%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.15) 0,
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 3px);
+    background-blend-mode: multiply, screen, multiply;
+    background-size: cover, cover, 6px 6px;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.6),    
+        inset 0 2px 10px rgba(0, 0, 0, 0.7); 
+  
+
+}
+
+.cover-symbols{
+
+    position: absolute;
+    width: 92%;
+    height: 92%;
+    border: inset 1px black;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 1000;
+    border-radius: 15px;
+    opacity: 1;
+    will-change: opacity;
+    backface-visibility: hidden;
+}
+
+.symbols-top, .symbols-bottom{
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr); 
+    width: 100%;
+    font-size: large;
+    text-align: center;
+    font-weight: bold;
+    color: #6c4830;
+    text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.8),
+        -1px -1px 2px rgba(255, 255, 255, 0.25);
+    transition: color 2s ease, text-shadow 2s ease;
+    
+}
+
+
+.symbols-top{
+    
+    top: 0%;
+}
+
+.symbols-bottom{
+    bottom: -1%;
+}
+
+.symbols-left, .symbols-right {
+    position: absolute;
+    width: 10%;
+    height: 90%;
+    top: 7%;
+    bottom: 10%;
+    display: grid;
+    grid-template-rows: repeat(10, 10%);
+    font-weight: bold;
+    color: #6c4830;
+    text-shadow: 
+        1px 1px 2px rgba(0, 0, 0, 0.8),
+        -1px -1px 2px rgba(255, 255, 255, 0.25);
+    transition: color 2s ease, text-shadow 2s ease;
+}
+
+.symbols-left{
+    left: 2%;
+    
+}
+.symbols-right{
+    right: -2%;
+}
+
+
+/* ----- Default State: No Glow (Symbols Appear Colorless) ----- */
+/* 
+  When the book is hovered, apply the glow animation to all symbol divs.
+  This common rule makes all four border groups use the same animation properties.
+*/
+.book.glow-active .symbols-top div,
+.book.glow-active .symbols-bottom div,
+.book.glow-active .symbols-left div,
+.book.glow-active .symbols-right div {
+  animation: glow-seq 2s forwards;
+}
+
+
+/* ======================================================== */
+/* TOP BORDER: animate left-to-right (nth-child 1 to 10)      */
+/* Delays: 0s, 0.1s, 0.2s, ... up to 0.9s                     */
+/* ======================================================== */
+.book.glow-active .symbols-top div:nth-child(1) { animation-delay: 0s; }
+.book.glow-active .symbols-top div:nth-child(2) { animation-delay: 0.1s; }
+.book.glow-active .symbols-top div:nth-child(3) { animation-delay: 0.2s; }
+.book.glow-active .symbols-top div:nth-child(4) { animation-delay: 0.3s; }
+.book.glow-active .symbols-top div:nth-child(5) { animation-delay: 0.4s; }
+.book.glow-active .symbols-top div:nth-child(6) { animation-delay: 0.5s; }
+.book.glow-active .symbols-top div:nth-child(7) { animation-delay: 0.6s; }
+.book.glow-active .symbols-top div:nth-child(8) { animation-delay: 0.7s; }
+.book.glow-active .symbols-top div:nth-child(9) { animation-delay: 0.8s; }
+.book.glow-active .symbols-top div:nth-child(10){ animation-delay: 0.9s; }
+
+/* ======================================================== */
+/* RIGHT BORDER: animate top-to-bottom (nth-child 1 to 10)    */
+/* Delays: 1.0s, 1.1s, 1.2s, ... up to 1.9s                   */
+/* ======================================================== */
+.book.glow-active .symbols-right div:nth-child(1) { animation-delay: 1.0s; }
+.book.glow-active .symbols-right div:nth-child(2) { animation-delay: 1.1s; }
+.book.glow-active .symbols-right div:nth-child(3) { animation-delay: 1.2s; }
+.book.glow-active .symbols-right div:nth-child(4) { animation-delay: 1.3s; }
+.book.glow-active .symbols-right div:nth-child(5) { animation-delay: 1.4s; }
+.book.glow-active .symbols-right div:nth-child(6) { animation-delay: 1.5s; }
+.book.glow-active .symbols-right div:nth-child(7) { animation-delay: 1.6s; }
+.book.glow-active .symbols-right div:nth-child(8) { animation-delay: 1.7s; }
+.book.glow-active .symbols-right div:nth-child(9) { animation-delay: 1.8s; }
+.book.glow-active .symbols-right div:nth-child(10){ animation-delay: 1.9s; }
+
+/* ======================================================== */
+/* BOTTOM BORDER: animate right-to-left (nth-child 1 to 10)   */
+/* Delays: starting at 0.9s down to 0s (reverse order)       */
+/* ======================================================== */
+.book.glow-active .symbols-bottom div:nth-child(1){ animation-delay: 0.9s; }
+.book.glow-active .symbols-bottom div:nth-child(2){ animation-delay: 0.8s; }
+.book.glow-active .symbols-bottom div:nth-child(3){ animation-delay: 0.7s; }
+.book.glow-active .symbols-bottom div:nth-child(4){ animation-delay: 0.6s; }
+.book.glow-active .symbols-bottom div:nth-child(5){ animation-delay: 0.5s; }
+.book.glow-active .symbols-bottom div:nth-child(6){ animation-delay: 0.4s; }
+.book.glow-active .symbols-bottom div:nth-child(7){ animation-delay: 0.3s; }
+.book.glow-active .symbols-bottom div:nth-child(8){ animation-delay: 0.2s; }
+.book.glow-active .symbols-bottom div:nth-child(9){ animation-delay: 0.1s; }
+.book.glow-active .symbols-bottom div:nth-child(10){ animation-delay: 0s; }
+
+/* ======================================================== */
+/* LEFT BORDER: animate bottom-to-top (nth-child 1 to 10)     */
+/* Delays: starting at 1.9s down to 1.0s (reverse order)       */
+/* ======================================================== */
+.book.glow-active .symbols-left div:nth-child(1) { animation-delay: 1.9s; }
+.book.glow-active .symbols-left div:nth-child(2) { animation-delay: 1.8s; }
+.book.glow-active .symbols-left div:nth-child(3) { animation-delay: 1.7s; }
+.book.glow-active .symbols-left div:nth-child(4) { animation-delay: 1.6s; }
+.book.glow-active .symbols-left div:nth-child(5) { animation-delay: 1.5s; }
+.book.glow-active .symbols-left div:nth-child(6) { animation-delay: 1.4s; }
+.book.glow-active .symbols-left div:nth-child(7) { animation-delay: 1.3s; }
+.book.glow-active .symbols-left div:nth-child(8) { animation-delay: 1.2s; }
+.book.glow-active .symbols-left div:nth-child(9) { animation-delay: 1.1s; }
+.book.glow-active .symbols-left div:nth-child(10){ animation-delay: 1.0s; }
+
+/* ======================================================== */
+/* KEYFRAMES: Define the glow animation for symbols         */
+/* ======================================================== */
+@keyframes glow-seq {
+  0% {
+    color: black;
+    text-shadow: none;
+  }
+  100% {
+    color: #fedd8b;
+    text-shadow:
+    0 0 5px #ff3300,
+    0 0 10px #ff3300,
+    0 0 15px #ff3300,
+    0 0 20px #ff3300;
+  }
+}
+
+
+.cover-text {
+    position: absolute;
+    top: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 20%;
+    width: 60%;
+    aspect-ratio: 7/10;
+    font-size: 90%;
+    color: #6c4830;
+    text-shadow: 
+      1px 1px 2px rgba(0, 0, 0, 0.8),
+      -1px -1px 2px rgba(255, 255, 255, 0.25);
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+    transition: color 2s ease, text-shadow 2s ease;
+    opacity: 1;
+    will-change: opacity;
+    backface-visibility: hidden;
+  }
+  
+  .book.glow-active .cover-text {
+    color: #ffaa00;
+    text-shadow:
+      0 0 5px #ff3300,
+      0 0 10px #ff3300,
+      0 0 15px #ff3300,
+      0 0 20px #ff3300;
+  }
+  
+
+
+  
+
+  .book-dimensions{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transform-style: preserve-3d;
+    
+  }
+
+  .bottom-side{
+    position: absolute;
+    bottom: 3%;
+    width: 94%;
+    height: 21.4%;
+    border-bottom-right-radius: 2px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 2px;
+    background-color: #e6c888;
+
+    /* Layered background images:
+       1) A subtle radial gradient for uneven lighting
+       2) A repeating linear gradient for faint speckles/fibers
+       3) Another repeating linear gradient at a different angle for more variation
+    */
+    background-image:
+      radial-gradient(circle at 50% 50%, 
+                      rgba(255, 255, 255, 0.25) 0%, 
+                      rgba(255, 255, 255, 0.05) 40%, 
+                      rgba(0, 0, 0, 0) 100%),
+      repeating-linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.03) 0px,
+        rgba(0, 0, 0, 0.03) 1px,
+        transparent 1px,
+        transparent 6px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(0, 0, 0, 0.02) 0px,
+        rgba(0, 0, 0, 0.02) 1px,
+        transparent 1px,
+        transparent 6px
+      );
+  
+    /* Blend the layers together to achieve a mottled texture */
+    background-blend-mode: multiply, multiply, multiply;
+  
+    /* Sizing each layer:
+       - The radial gradient will scale to cover the entire area.
+       - The repeating linear gradients are given a small tile size to create fine grain. */
+    background-size: cover, 6px 6px, 6px 6px;
+    transform-origin: bottom center;
+    border-top: 2px solid #482d15;
+    transform: rotateX(90deg);
+    transform-style: preserve-3d;
+  }
+
+  .right-side{
+    position: absolute;
+    top: 2%;
+    width: 30%;
+    height: 95%;
+    right: -24%;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    background-color: #e6c888;
+
+    /* Layered background images:
+       1) A subtle radial gradient for uneven lighting
+       2) A repeating linear gradient for faint speckles/fibers
+       3) Another repeating linear gradient at a different angle for more variation
+    */
+    background-image:
+      radial-gradient(circle at 50% 50%, 
+                      rgba(255, 255, 255, 0.25) 0%, 
+                      rgba(255, 255, 255, 0.05) 40%, 
+                      rgba(0, 0, 0, 0) 100%),
+      repeating-linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.03) 0px,
+        rgba(0, 0, 0, 0.03) 1px,
+        transparent 1px,
+        transparent 6px
+      ),
+      repeating-linear-gradient(
+        -45deg,
+        rgba(0, 0, 0, 0.02) 0px,
+        rgba(0, 0, 0, 0.02) 1px,
+        transparent 1px,
+        transparent 6px
+      );
+  
+    /* Blend the layers together to achieve a mottled texture */
+    background-blend-mode: multiply, multiply, multiply;
+  
+    /* Sizing each layer:
+       - The radial gradient will scale to cover the entire area.
+       - The repeating linear gradients are given a small tile size to create fine grain. */
+    background-size: cover, 6px 6px, 6px 6px;
+    transform-origin: left;
+    transform: rotateY(90deg);
+    
+  }
+  .left-binder{
+    position: absolute;
+    bottom: 2%;
+    width: 5%;
+    height: 21.4%;
+    left: -5%;
+    border-radius: 20%;
+    background-color: red;
+    transform-origin: bottom;
+    transform: rotateX(90deg);
+    background: 
+    radial-gradient(ellipse, #6c4830, #482d15 60%, #4f2d12 100%),
+    linear-gradient(to right, rgba(233, 229, 229, 0.2) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.2) 100%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.15) 0,
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 3px);
+    background-blend-mode: multiply, screen, multiply;
+    background-size: cover, cover, 6px 6px;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.6),    
+        inset 0 2px 10px rgba(0, 0, 0, 0.7); 
+    transform-style: preserve-3d;
+    
+
+  }
+
+  .back-cover{
+    position: absolute;
+    top: -462%;
+    left: -4%;
+    width: 110%;
+    height: 490%;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    transform-origin: 0% 94%;
+    transform: rotateX(-90deg);
+
+    background: 
+    radial-gradient(ellipse, #6c4830, #482d15 60%, #4f2d12 100%),
+    linear-gradient(to right, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.2) 100%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.15) 0,
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    background-blend-mode: multiply, screen, multiply;
+    background-size: cover, cover, 6px 6px;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.6),    
+        inset 0 2px 10px rgba(0, 0, 0, 0.7);
+
+  }
+
+ 
+.leaf{
+  position: absolute;
+  top:0.5%;
+  width: 99%;
+  height: 99%;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 4px;
+  border-top-left-radius: 4px;
+  background-color: red;
+  transform-origin: left;
+  transform: rotateY(0deg);
+  background: url('pages-background.png') center center/cover no-repeat;
+  transform-style: preserve-3d;
+  transition: 1s ease-in-out;
+  transform-origin: left;
+  
+}
+
+
+.leaf.flip{
+  transform: rotateY(-180deg);
+}
+  
+.one{z-index: 11;}
+.two{z-index: 10;}
+.three{z-index: 9;}
+.four{z-index: 8;}
+.five{z-index: 7;}
+.six{z-index: 6;}
+.seven{z-index: 5;}
+.eight{z-index: 4;}
+.nine{z-index: 3;}
+.ten{z-index: 2;}
+.eleven{z-index: 1;}
+
+.one.flip{z-index: 1;}
+.two.flip{z-index: 2;}
+.three.flip{z-index: 3;}
+.four.flip{z-index: 4;}
+.five.flip{z-index: 5;}
+.six.flip{z-index: 6;}
+.seven.flip{z-index: 7;}
+.eight.flip{z-index: 8;}
+.nine.flip{z-index: 9;}
+.ten.flip{z-index: 10;}
+.eleven.flip{z-index: 11;}
+
+ 
+  .front {
+    z-index: 1;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    overflow: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    background: url('pages-background.png') center center/cover no-repeat;
+    backface-visibility: hidden;
+    
+}
+
+  .back {
+    
+    z-index: 1;
+    padding-right: 2px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    background: url('pages-background.png') center center/cover no-repeat;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    
+  } 
+ 
+
+
+
+  .last-page{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+    background: 
+    radial-gradient(ellipse, #6c4830, #482d15 60%, #4f2d12 100%),
+    linear-gradient(to right, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.6) 50%, rgba(255,255,255,0.2) 100%),
+    repeating-linear-gradient(
+      45deg,
+      rgba(0, 0, 0, 0.15) 0,
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    background-blend-mode: multiply, screen, multiply;
+    background-size: cover, cover, 6px 6px;
+    box-shadow: 
+        0 5px 15px rgba(0, 0, 0, 0.6),    
+        inset 0 2px 10px rgba(0, 0, 0, 0.7);
+    z-index: -12;
+
+  }
+
+  
+  
