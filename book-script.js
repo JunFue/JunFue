@@ -2,6 +2,7 @@ const book = document.getElementById('book');
 const cover = document.getElementById('cover-container');
 // Select all leaf elements whose id begins with 'leaf-'
 const leaf = document.querySelectorAll('[id^="leaf-"]');
+const fullscreen = document.getElementById('fullscreen');
 let clickCount = 0;
 
 
@@ -34,6 +35,9 @@ function nextStep() {
   } else if (clickCount === 2) {
     book.classList.add('bookAnimation2');
   } else if (clickCount === 3) {
+
+    //fullscreen appears on 3rd click on .nav-container
+    fullscreen.classList.add('bx-fullscreen')
     cover.classList.add('coverFlip');
     book.classList.remove('glow-active');
   } else if (clickCount >= 4 && clickCount <= 14) {
@@ -49,8 +53,8 @@ function previousStep() {
   if (clickCount >= 4 && clickCount <= 14) {
     unflipCurrentLeaf();
   } else if (clickCount === 3) {
+    fullscreen.classList.remove('bx-fullscreen')
     cover.classList.remove('coverFlip');
-    // Restore glow if needed for step 1
     book.classList.add('glow-active');
   } else if (clickCount === 2) {
     book.classList.remove('bookAnimation2');
@@ -94,3 +98,22 @@ book.addEventListener('mousedown', (e) => {
     nextStep();
   }
 });
+
+//fullscreen function//
+
+fullscreen.addEventListener('mousedown', (e) => {
+  let clickCount = 0;
+  clickCount++;
+  if (e.button === 0 && clickCount === 1){
+    book.classList.add('fullscreen');
+  } else if (e.button === 0 && clickCount === 2){
+    book.classList.remove('fullscreen');
+    clickCount -= clickCount ;
+  }
+console.log(clickCount)
+})
+
+
+
+
+
