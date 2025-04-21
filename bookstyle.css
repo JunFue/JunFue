@@ -9,6 +9,14 @@
 }
 
 /* --------------  Scene wrapper  --------------------------- */
+.image-bg{
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-size: contain;
+  background: url(mystical-room-bg.png)  center center/cover no-repeat;
+  filter: blur(2px) brightness(0.7);
+}
 body{
   padding:20%;
   width:100vw;
@@ -16,12 +24,6 @@ body{
   display:flex;
   justify-content:center;
   align-items:center;
-  background:radial-gradient(
-            circle,
-            rgba(31,29,29,.8)   0%,
-            rgb(19,19,19)       50%,
-            rgba(0,0,0,1)       80%,
-            rgba(0,0,0,1)      100%);
   perspective:800px;
 }
 
