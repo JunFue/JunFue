@@ -55,11 +55,9 @@ body{
    Fullscreen STATE  (no keyframes → uses .book transition)
 ========================================================== */
 .fullscreen{
-  
-  /* remove tilt & enlarge via GPU‑friendly scale */
   transform:
       translateX(70%)
-      scale(1.6)                /* tweak to taste */
+      scale(1.6)              
       rotateX(0) rotateY(0) rotateZ(0);
 
   /* heavy shadows appear *after* transition thanks to delay */
